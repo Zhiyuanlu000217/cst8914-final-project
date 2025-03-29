@@ -1,5 +1,4 @@
 /* Navbar */
-
 .logo img { /* Logo size */
     max-height: 50px;
     width: auto;
@@ -18,7 +17,7 @@ nav ul {
     display: flex;
     list-style: none;
 }
-  
+
 nav li {
     margin-left: 1.5rem;
 }
@@ -36,3 +35,41 @@ nav a:hover, nav a:focus {
     border-bottom: 2px solid #337ab7;
     text-decoration: none;
 }
+
+/* Page sections */
+
+.page-section {
+    display: none;
+}
+
+.page-section.active {
+    display: block;
+}
+
+/* Home Section */
+#meet-community-btn:hover, #meet-community-btn:focus {
+    background-color: #ffcc00; /* Bright yellow provides high contrast against black and is distinct from white */
+    outline: none;  
+}
+
+/* Table */
+.content-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.content-table th,
+.content-table td {
+    border: 1px solid #333;
+    padding: 1rem;
+}
+
+.table-header th {
+    border:1px solid black;
+    background-color: #f8f9fa;
+}
+
+.content-table td {
+    border:1px solid black;
+}
+
