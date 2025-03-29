@@ -72,3 +72,55 @@ modal.addEventListener('click', function(e) {
     closeModal();
     }
 });
+
+
+// Control the active section of the page
+document.addEventListener('DOMContentLoaded', () => {
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('#main-nav a');
+    
+    // Function to update active section
+    const updateActiveSection = (targetId) => {
+        // Remove active class from all sections and links
+        document.querySelectorAll('.page-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            link.removeAttribute('aria-current');
+        });
+
+        // Add active class to target section and link
+        const targetSection = document.querySelector(targetId);
+        const targetLink = document.querySelector(`a[href="${targetId}"]`);
+        
+        if (targetSection) {
+            targetSection.classList.add('active');
+        }
+        if (targetLink) {
+            targetLink.classList.add('active');
+            targetLink.setAttribute('aria-current', 'page');
+        }
+    };
+
+    // Add click event listeners to navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            updateActiveSection(targetId);
+            // Update URL without page reload
+            history.pushState(null, '', targetId);
+        });
+    });
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', () => {
+        const currentHash = window.location.hash || '#home';
+        updateActiveSection(currentHash);
+    });
+
+    // Set initial active section based on URL or default to home
+    const initialHash = window.location.hash || '#home';
+    updateActiveSection(initialHash);
+});
