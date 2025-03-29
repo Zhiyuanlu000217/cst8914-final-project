@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Remove active class from all sections and links
         document.querySelectorAll('.page-section').forEach(section => {
             section.classList.remove('active');
+            section.setAttribute('aria-hidden', 'true');
         });
         navLinks.forEach(link => {
             link.classList.remove('active');
@@ -96,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (targetSection) {
             targetSection.classList.add('active');
+            targetSection.removeAttribute('aria-hidden');
         }
         if (targetLink) {
             targetLink.classList.add('active');
@@ -123,4 +125,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set initial active section based on URL or default to home
     const initialHash = window.location.hash || '#home';
     updateActiveSection(initialHash);
+    
+    // Show/hide event details when speaker checkbox is checked
+    const speakerCheckbox = document.getElementById('speaker');
+    const eventDetailsGroup = document.getElementById('event-details-group');
+    
+    if (speakerCheckbox && eventDetailsGroup) {
+        // Initial check in case the checkbox is already checked
+        eventDetailsGroup.hidden = !speakerCheckbox.checked;
+        
+        speakerCheckbox.addEventListener('change', () => {
+            eventDetailsGroup.hidden = !speakerCheckbox.checked;
+        });
+    }
 });

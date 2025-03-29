@@ -183,3 +183,26 @@
         .toggle-label {
             cursor: pointer;
         }
+
+    /* Event Details Form Group */
+        #event-details-group label {
+            display: block;
+        }
+
+    /* Schedule Section */
+        .schedule-intro {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .schedule-intro p {
+            flex: 1;
+            margin: 0;
+        }
+
+        .schedule-image {
+            width: 60px;
+            height: auto;
+        }
