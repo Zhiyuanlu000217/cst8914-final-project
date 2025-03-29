@@ -1,0 +1,38 @@
+/* Navbar */
+
+.logo img { /* Logo size */
+    max-height: 50px;
+    width: auto;
+}
+
+header { /* Navbar styling */
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+  
+nav li {
+    margin-left: 1.5rem;
+}
+
+nav a {
+    padding: 0.5rem;
+    border-bottom: 2px solid transparent;
+}
+
+nav a.active {
+    border-bottom: 2px solid #337ab7;
+}
+
+nav a:hover, nav a:focus {
+    border-bottom: 2px solid #337ab7;
+    text-decoration: none;
+}
