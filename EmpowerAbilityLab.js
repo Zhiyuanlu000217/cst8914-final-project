@@ -79,6 +79,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get all navigation links
     const navLinks = document.querySelectorAll('#main-nav a');
     
+    // Make all external links open in a new tab
+    const externalLinks = document.querySelectorAll('a[href^="http"], a.learn-more');
+    externalLinks.forEach(link => {
+        if (!link.hasAttribute('target')) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener');
+            
+            // For accessibility, indicate that link opens in a new tab
+            if (!link.getAttribute('aria-label')) {
+                const linkText = link.textContent.trim();
+                link.setAttribute('aria-label', `${linkText} (opens in a new tab)`);
+            }
+        }
+    });
+    
     // Function to update active section
     const updateActiveSection = (targetId) => {
         // Remove active class from all sections and links
@@ -262,3 +277,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+
+
+
+
+
+

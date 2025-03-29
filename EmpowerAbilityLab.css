@@ -16,6 +16,8 @@ header { /* Navbar styling */
 nav ul {
     display: flex;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav li {
@@ -34,6 +36,40 @@ nav a.active {
 nav a:hover, nav a:focus {
     border-bottom: 2px solid #337ab7;
     text-decoration: none;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav li {
+        margin: 0;
+        border-bottom: 1px solid #eee;
+        width: 100%;
+    }
+
+    nav li:last-child {
+        border-bottom: none;
+    }
+
+    nav a {
+        display: block;
+        padding: 0.75rem 0;
+        width: 100%;
+    }
 }
 
 /* Page sections */
@@ -249,3 +285,52 @@ nav a:hover, nav a:focus {
         color: #a94442;
         border: 1px solid #ebccd1;
     }
+
+
+/* Other styles */
+/* Below will not affect functionality, just make it looks better */
+
+body {
+    padding: 2rem;
+}
+
+main {
+    padding: 2rem;
+}
+
+footer {
+    padding: 2rem;
+    width: 100%;
+    background-color: #f8f9fa;
+}
+
+footer.container {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+header {
+    padding: 2rem;
+}
+
+button {
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #333;
+}
+
+.page-section {
+    background-color: #fff;
+}
+
+.service-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
