@@ -100,6 +100,72 @@
         <p>Go beyond WCAG! Involve individuals with disabilities in usability testing to gather valuable insights for refining product strategy and identifying accessibility concerns at an early stage when solutions are more feasible and cost-effective. You have access to a diverse community of people with disabilities, who use various assistive technologies. With technical expertise ranging from novice to expert, our community can support your product lifecycle from user research, to design, to QA.</p>
       </div>
     </section>
+
+    <!-- Schedule a Call Section -->
+    <section id="schedule" class="page-section" aria-labelledby="schedule-heading" aria-hidden="true">
+      <h1 id="schedule-heading">Schedule a call</h1>
+      <p>At Empower Ability Labs, we are dedicated to cultivating empathy and driving positive change through immersive experiences. Fill out the form below and we'll get back to you as soon as we can to schedule a call with our sales team!</p>
+      <div id="form-message" aria-live="assertive" role="status"></div>
+
+      <form id="contact-form" novalidate aria-labelledby="form-heading">
+        <h2 id="form-heading" class="visually-hidden">Contact Form</h2>
+        
+        <div class="form-group">
+          <label for="business-name">Business Name:</label>
+          <input type="text" id="business-name" name="business-name" aria-describedby="business-name-error">
+          <div id="business-name-error" class="error-message" aria-live="polite"></div>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone number (613-123-1234):</label>
+          <input type="tel" id="phone" name="phone" aria-describedby="phone-error" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+          <div id="phone-error" class="error-message" aria-live="polite"></div>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email: <span class="required">(required)</span></label>
+          <input type="email" id="email" name="email" required aria-describedby="email-error" aria-required="true">
+          <div id="email-error" class="error-message" aria-live="polite"></div>
+        </div>
+        
+        <fieldset>
+          <legend>What would you like to talk about:</legend>
+          <div class="checkbox-group">
+            <input type="checkbox" id="lab-days" name="topics" value="lab-days">
+            <label for="lab-days">Awareness lab days and workshops</label>
+          </div>
+          
+          <div class="checkbox-group">
+            <input type="checkbox" id="speaker" name="topics" value="speaker">
+            <label for="speaker">Invite a speaker with disabilities to your event</label>
+          </div>
+          
+          <div class="checkbox-group">
+            <input type="checkbox" id="testing" name="topics" value="testing">
+            <label for="testing">Usability testing</label>
+          </div>
+        </fieldset>
+        
+        <div class="form-group" id="event-details-group" hidden>
+          <label for="event-details">Please tell us about your event</label>
+          <textarea id="event-details" name="event-details" rows="4" aria-describedby="event-details-error"></textarea>
+          <div id="event-details-error" class="error-message" aria-live="polite"></div>
+        </div>
+        
+        <div class="toggle-container">
+          <label class="switch">
+            <input type="checkbox" id="email-updates">
+            <span class="slider"></span>
+          </label>
+          <span class="toggle-label">Receive emails about updates and services</span>
+        </div>
+        
+        <div class="form-group">
+          <button type="submit" id="submit-btn">Schedule a call</button>
+        </div>
+        
+      </form>
+    </section>
     
   </main>
 
