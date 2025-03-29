@@ -97,3 +97,21 @@ nav a:hover, nav a:focus {
     max-width: 600px;
     max-height: 90vh;
 }
+
+/* Services Section */
+.services-intro {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.services-intro p {
+    flex: 1;
+    margin: 0;
+}
+
+.services-image {
+    width: 60px;
+    height: auto;
+}
