@@ -1,208 +1,251 @@
 /* Navbar */
-    .logo img { /* Logo size */
-        max-height: 50px;
-        width: auto;
-    }
+.logo img { /* Logo size */
+    max-height: 50px;
+    width: auto;
+}
 
-    header { /* Navbar styling */
-        background-color: #fff;
-        padding: 1rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+header { /* Navbar styling */
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    nav ul {
-        display: flex;
-        list-style: none;
-    }
-    
-    nav li {
-        margin-left: 1.5rem;
-    }
+nav ul {
+    display: flex;
+    list-style: none;
+}
 
-    nav a {
-        padding: 0.5rem;
-        border-bottom: 2px solid transparent;
-    }
+nav li {
+    margin-left: 1.5rem;
+}
 
-    nav a.active {
-        border-bottom: 2px solid #337ab7;
-    }
+nav a {
+    padding: 0.5rem;
+    border-bottom: 2px solid transparent;
+}
 
-    nav a:hover, nav a:focus {
-        border-bottom: 2px solid #337ab7;
-        text-decoration: none;
-    }
+nav a.active {
+    border-bottom: 2px solid #337ab7;
+}
+
+nav a:hover, nav a:focus {
+    border-bottom: 2px solid #337ab7;
+    text-decoration: none;
+}
 
 /* Page sections */
 
-    .page-section {
-        display: none;
+.page-section {
+    display: none;
+}
+
+.page-section.active {
+    display: block;
+}
+
+/* Home Section */
+#meet-community-btn:hover, #meet-community-btn:focus {
+    background-color: #ffcc00; /* Bright yellow provides high contrast against black and is distinct from white */
+    outline: none;  
+}
+
+/* Table */
+.content-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.content-table th,
+.content-table td {
+    border: 1px solid #333;
+    padding: 1rem;
+}
+
+.table-header th {
+    border:1px solid black;
+    background-color: #f8f9fa;
+}
+
+.content-table td {
+    border:1px solid black;
+}
+
+/* Modal */
+
+.modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* blur background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+  
+.modal[hidden] {
+    display: none;
+}
+  
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+}
+
+/* Services Section */
+.services-intro {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.services-intro p {
+    flex: 1;
+    margin: 0;
+}
+
+.services-image {
+    width: 60px;
+    height: auto;
+}
+
+/* Scheduele section */
+/* Form Styles */
+
+    fieldset {
+        border: 2px solid #333;
+        padding: 1rem;
+        margin: 1rem 0;
+        width: fit-content;
     }
 
-    .page-section.active {
+    legend {
+        padding: 2 2rem;
+        width: fit-content;
+    }
+
+/* Toggle Switch */
+
+    .toggle-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 24px;
+    }
+
+    .switch input {
+        opacity: 0;
+        position: absolute;
+    }
+
+    .slider {
+        position: absolute;
+        inset: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 34px;
+        cursor: pointer;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        border-radius: 50%;
+        transition: .4s;
+    }
+
+    input:checked + .slider {
+        background-color: #337ab7;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(26px);
+    }
+
+    .toggle-label {
+        cursor: pointer;
+    }
+
+/* Event Details Form Group */
+    #event-details-group label {
         display: block;
     }
 
-/* Home Section */
-    #meet-community-btn:hover, #meet-community-btn:focus {
-        background-color: #ffcc00; /* Bright yellow provides high contrast against black and is distinct from white */
-        outline: none;  
-    }
-
-    /* Table */
-    .content-table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    .content-table th,
-    .content-table td {
-        border: 1px solid #333;
-        padding: 1rem;
-    }
-
-    .table-header th {
-        border:1px solid black;
-        background-color: #f8f9fa;
-    }
-
-    .content-table td {
-        border:1px solid black;
-    }
-
-    /* Modal */
-
-    .modal {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); /* blur background */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000; 
-    }
-      
-    .modal[hidden] {
-        display: none;
-    }
-      
-    .modal-content {
-        background-color: #fff;
-        padding: 2rem;
-        width: 90%;
-        max-width: 600px;
-        max-height: 90vh;
-    }
-
-/* Services Section */
-    .services-intro {
+/* Schedule Section */
+    .schedule-intro {
         display: flex;
         align-items: flex-start;
         gap: 2rem;
         margin-bottom: 2rem;
     }
 
-    .services-intro p {
+    .schedule-intro p {
         flex: 1;
         margin: 0;
     }
 
-    .services-image {
+    .schedule-image {
         width: 60px;
         height: auto;
     }
 
-/* Scheduele section */
-    /* Form Styles */
+/* Form Validation */
+    .error-message {
+        color: #d9534f;
+        font-size: 0.9rem;
+        margin-top: 0.25rem;
+        display: none;
+    }
 
-        fieldset {
-            border: 2px solid #333;
-            padding: 1rem;
-            margin: 1rem 0;
-            width: fit-content;
-        }
+    .error-message.visible {
+        display: block;
+    }
 
-        legend {
-            padding: 2 2rem;
-            width: fit-content;
-        }
+    .form-group input.error, 
+    .form-group textarea.error {
+        border: 1px solid #d9534f;
+    }
 
-    /* Toggle Switch */
+    .form-group {
+        margin-bottom: 1rem;
+    }
 
-        .toggle-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+    .required {
+        color: #d9534f;
+    }
 
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
+    #form-message {
+        padding: 1rem;
+        margin: 1rem 0;
+        border-radius: 4px;
+    }
 
-        .switch input {
-            opacity: 0;
-            position: absolute;
-        }
+    #form-message.success {
+        background-color: #dff0d8;
+        color: #3c763d;
+        border: 1px solid #d6e9c6;
+    }
 
-        .slider {
-            position: absolute;
-            inset: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-            cursor: pointer;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            border-radius: 50%;
-            transition: .4s;
-        }
-
-        input:checked + .slider {
-            background-color: #337ab7;
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        .toggle-label {
-            cursor: pointer;
-        }
-
-    /* Event Details Form Group */
-        #event-details-group label {
-            display: block;
-        }
-
-    /* Schedule Section */
-        .schedule-intro {
-            display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .schedule-intro p {
-            flex: 1;
-            margin: 0;
-        }
-
-        .schedule-image {
-            width: 60px;
-            height: auto;
-        }
+    #form-message.error {
+        background-color: #f2dede;
+        color: #a94442;
+        border: 1px solid #ebccd1;
+    }

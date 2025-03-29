@@ -138,4 +138,127 @@ document.addEventListener('DOMContentLoaded', () => {
             eventDetailsGroup.hidden = !speakerCheckbox.checked;
         });
     }
+
+    // Form validation
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        const formMessage = document.getElementById('form-message');
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const phoneInput = document.getElementById('phone');
+        const phoneError = document.getElementById('phone-error');
+        const eventDetails = document.getElementById('event-details');
+        const eventDetailsError = document.getElementById('event-details-error');
+
+        // Email validation
+        const validateEmail = (email) => {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        };
+
+        // Phone validation
+        const validatePhone = (phone) => {
+            // Allow empty phone (not required)
+            if (phone === '') return true;
+            
+            // Accept both formats: xxx-xxx-xxxx or xxxxxxxxxx
+            const reWithDashes = /^\d{3}-\d{3}-\d{4}$/;
+            const reWithoutDashes = /^\d{10}$/;
+            return reWithDashes.test(phone) || reWithoutDashes.test(phone);
+        };
+
+        // Function to show error
+        const showError = (input, errorElement, message) => {
+            input.classList.add('error');
+            errorElement.textContent = message;
+            errorElement.classList.add('visible');
+            return false;
+        };
+
+        // Function to hide error
+        const hideError = (input, errorElement) => {
+            input.classList.remove('error');
+            errorElement.textContent = '';
+            errorElement.classList.remove('visible');
+            return true;
+        };
+
+        // Form submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let isValid = true;
+
+            // Validate email (required)
+            if (!emailInput.value.trim()) {
+                isValid = showError(emailInput, emailError, 'Email is required.');
+            } else if (!validateEmail(emailInput.value.trim())) {
+                isValid = showError(emailInput, emailError, 'Please enter a valid email address.');
+            } else {
+                hideError(emailInput, emailError);
+            }
+
+            // Validate phone (if provided)
+            if (phoneInput.value.trim() && !validatePhone(phoneInput.value.trim())) {
+                isValid = showError(phoneInput, phoneError, 'Please enter a valid phone number (xxx-xxx-xxxx or xxxxxxxxxx).');
+            } else {
+                hideError(phoneInput, phoneError);
+            }
+
+            // Validate event details if speaker is checked
+            if (speakerCheckbox && speakerCheckbox.checked && (!eventDetails.value.trim())) {
+                isValid = showError(eventDetails, eventDetailsError, 'Please provide details about your event.');
+            } else if (eventDetails) {
+                hideError(eventDetails, eventDetailsError);
+            }
+
+            // If valid, show success message
+            if (isValid) {
+                formMessage.textContent = 'Thank you for contacting Empower Ability Labs! We will get back to you soon.';
+                formMessage.className = 'success';
+                contactForm.reset();
+            } else {
+                formMessage.textContent = 'Please correct the errors in the form.';
+                formMessage.className = 'error';
+            }
+        });
+
+        // Live validation for email
+        emailInput.addEventListener('blur', () => {
+            if (!emailInput.value.trim()) {
+                showError(emailInput, emailError, 'Email is required.');
+            } else if (!validateEmail(emailInput.value.trim())) {
+                showError(emailInput, emailError, 'Please enter a valid email address.');
+            } else {
+                hideError(emailInput, emailError);
+            }
+        });
+
+        // Live validation for phone
+        phoneInput.addEventListener('blur', () => {
+            if (phoneInput.value.trim() && !validatePhone(phoneInput.value.trim())) {
+                showError(phoneInput, phoneError, 'Please enter a valid phone number (xxx-xxx-xxxx or xxxxxxxxxx).');
+            } else {
+                hideError(phoneInput, phoneError);
+            }
+        });
+    }
+
+    // Modal functionality
+    const openModalBtn = document.getElementById('meet-community-btn');
+    const modal = document.getElementById('community-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+
+    if (openModalBtn && modal && closeModalBtn) {
+        openModalBtn.addEventListener('click', () => {
+            modal.hidden = false;
+            modal.setAttribute('aria-hidden', 'false');
+            closeModalBtn.focus();
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.hidden = true;
+            modal.setAttribute('aria-hidden', 'true');
+            openModalBtn.focus();
+        });
+    }
 });
