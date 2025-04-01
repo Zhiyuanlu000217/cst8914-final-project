@@ -298,18 +298,24 @@ main {
     padding: 2rem;
 }
 
+/* Add focus styles for h1 headings */
+h1:focus {
+    outline: 4px solid #ffcc00;
+    outline-offset: 4px;
+    box-shadow: 0 0 0 4px rgba(255, 204, 0, 0.3);
+}
+
+/* Remove the focus-visible check to always show focus */
+h1:focus-visible {
+    outline: 4px solid #ffcc00;
+    outline-offset: 4px;
+    box-shadow: 0 0 0 4px rgba(255, 204, 0, 0.3);
+}
+
 footer {
     padding: 2rem;
     width: 100%;
     background-color: #f8f9fa;
-}
-
-footer.container {
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 2rem;
-    padding-right: 2rem;
 }
 
 header {

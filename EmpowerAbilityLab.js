@@ -117,6 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update page title based on section
             const sectionName = targetId.replace('#', '').charAt(0).toUpperCase() + targetId.slice(2);
             document.title = `Empower Ability Labs - ${sectionName}`;
+
+            // Focus on the section's h1 heading
+            const sectionHeading = targetSection.querySelector('h1');
+            if (sectionHeading) {
+                sectionHeading.focus();
+            }
         }
         if (targetLink) {
             targetLink.classList.add('active');
