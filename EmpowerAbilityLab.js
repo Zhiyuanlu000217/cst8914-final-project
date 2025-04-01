@@ -113,6 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetSection) {
             targetSection.classList.add('active');
             targetSection.removeAttribute('aria-hidden');
+            
+            // Update page title based on section
+            const sectionName = targetId.replace('#', '').charAt(0).toUpperCase() + targetId.slice(2);
+            document.title = `Empower Ability Labs - ${sectionName}`;
         }
         if (targetLink) {
             targetLink.classList.add('active');
