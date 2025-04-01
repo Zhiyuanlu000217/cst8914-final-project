@@ -290,8 +290,28 @@ nav a:hover, nav a:focus {
 /* Other styles */
 /* Below will not affect functionality, just make it looks better */
 
+/* Skip link styles */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #ffcc00;
+    color: #000;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 4px solid #ffcc00;
+    outline-offset: 4px;
+    box-shadow: 0 0 0 4px rgba(255, 204, 0, 0.3);
+}
+
 body {
     padding: 2rem;
+    position: relative;
 }
 
 main {

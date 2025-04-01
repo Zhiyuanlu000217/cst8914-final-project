@@ -118,6 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const sectionName = targetId.replace('#', '').charAt(0).toUpperCase() + targetId.slice(2);
             document.title = `Empower Ability Labs - ${sectionName}`;
 
+            // Update skip link href to point to the active section
+            const skipLink = document.querySelector('.skip-link');
+            if (skipLink) {
+                skipLink.href = targetId;
+            }
+
             // Focus on the section's h1 heading
             const sectionHeading = targetSection.querySelector('h1');
             if (sectionHeading) {
