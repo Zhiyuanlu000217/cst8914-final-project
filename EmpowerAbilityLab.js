@@ -300,6 +300,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Update toggle switch accessibility
+    const emailUpdatesToggle = document.getElementById('email-updates');
+    if (emailUpdatesToggle) {
+        emailUpdatesToggle.addEventListener('change', function() {
+            this.setAttribute('aria-checked', this.checked.toString());
+        });
+    }
 });
 
 
