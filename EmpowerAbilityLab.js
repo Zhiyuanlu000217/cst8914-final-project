@@ -203,6 +203,12 @@ document.addEventListener('DOMContentLoaded', () => {
             input.classList.add('error');
             errorElement.textContent = message;
             errorElement.classList.add('visible');
+            // Set aria-invalid on the input
+            input.setAttribute('aria-invalid', 'true');
+            // Make the error message live and assertive
+            errorElement.setAttribute('aria-live', 'assertive');
+            // Focus the input with error
+            input.focus();
             return false;
         };
 
@@ -211,6 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
             input.classList.remove('error');
             errorElement.textContent = '';
             errorElement.classList.remove('visible');
+            // Remove aria-invalid
+            input.removeAttribute('aria-invalid');
             return true;
         };
 
@@ -218,26 +226,35 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             let isValid = true;
+            let firstError = null;
 
             // Validate email (required)
             if (!emailInput.value.trim()) {
-                isValid = showError(emailInput, emailError, 'Email is required.');
+                isValid = false;
+                if (!firstError) firstError = emailInput;
+                showError(emailInput, emailError, 'Email is required.');
             } else if (!validateEmail(emailInput.value.trim())) {
-                isValid = showError(emailInput, emailError, 'Please enter a valid email address.');
+                isValid = false;
+                if (!firstError) firstError = emailInput;
+                showError(emailInput, emailError, 'Please enter a valid email address.');
             } else {
                 hideError(emailInput, emailError);
             }
 
             // Validate phone (if provided)
             if (phoneInput.value.trim() && !validatePhone(phoneInput.value.trim())) {
-                isValid = showError(phoneInput, phoneError, 'Please enter a valid phone number (xxx-xxx-xxxx or xxxxxxxxxx).');
+                isValid = false;
+                if (!firstError) firstError = phoneInput;
+                showError(phoneInput, phoneError, 'Please enter a valid phone number (xxx-xxx-xxxx or xxxxxxxxxx).');
             } else {
                 hideError(phoneInput, phoneError);
             }
 
             // Validate event details if speaker is checked
             if (speakerCheckbox && speakerCheckbox.checked && (!eventDetails.value.trim())) {
-                isValid = showError(eventDetails, eventDetailsError, 'Please provide details about your event.');
+                isValid = false;
+                if (!firstError) firstError = eventDetails;
+                showError(eventDetails, eventDetailsError, 'Please provide details about your event.');
             } else if (eventDetails) {
                 hideError(eventDetails, eventDetailsError);
             }
@@ -246,10 +263,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isValid) {
                 formMessage.textContent = 'Thank you for contacting Empower Ability Labs! We will get back to you soon.';
                 formMessage.className = 'success';
+                formMessage.setAttribute('aria-live', 'assertive');
                 contactForm.reset();
             } else {
+                // Focus the first error field
+                if (firstError) {
+                    firstError.focus();
+                }
                 formMessage.textContent = 'Please correct the errors in the form.';
                 formMessage.className = 'error';
+                formMessage.setAttribute('aria-live', 'assertive');
             }
         });
 
