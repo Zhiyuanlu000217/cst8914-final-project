@@ -17,8 +17,12 @@ function openModal() {
     modal.removeAttribute('hidden');
     modal.setAttribute('aria-hidden', 'false');
 
-    // Trap focus inside modal
-    closeModalBtn.focus();
+    // Set initial focus to the modal title
+    const modalTitle = document.getElementById('modal-title');
+    if (modalTitle) {
+        modalTitle.setAttribute('tabindex', '-1');
+        modalTitle.focus();
+    }
 
     // Add event listeners
     document.addEventListener('keydown', handleModalKeydown);
@@ -52,13 +56,13 @@ function handleModalKeydown(e) {
         
         // If shift+tab and focus is on first element, move to last element
         if (e.shiftKey && document.activeElement === firstElement) {
-        e.preventDefault();
-        lastElement.focus();
+            e.preventDefault();
+            lastElement.focus();
         }
         // If tab and focus is on last element, move to first element
         else if (!e.shiftKey && document.activeElement === lastElement) {
-        e.preventDefault();
-        firstElement.focus();
+            e.preventDefault();
+            firstElement.focus();
         }
     }
 }
@@ -294,25 +298,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 hideError(phoneInput, phoneError);
             }
-        });
-    }
-
-    // Modal functionality
-    const openModalBtn = document.getElementById('meet-community-btn');
-    const modal = document.getElementById('community-modal');
-    const closeModalBtn = document.getElementById('close-modal-btn');
-
-    if (openModalBtn && modal && closeModalBtn) {
-        openModalBtn.addEventListener('click', () => {
-            modal.hidden = false;
-            modal.setAttribute('aria-hidden', 'false');
-            closeModalBtn.focus();
-        });
-
-        closeModalBtn.addEventListener('click', () => {
-            modal.hidden = true;
-            modal.setAttribute('aria-hidden', 'true');
-            openModalBtn.focus();
         });
     }
 });
